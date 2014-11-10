@@ -49,6 +49,10 @@ By [@kcrawford](https://twitter.com/kcrawford)
 
 ### set_desktops.py
 
+[GitHub Repo](https://github.com/grahamgilbert/macscripts/tree/master/set_desktops)
+By [Graham Gilbert](http://grahamgilbert.com)
+[Usage]()
+
 
 ### mcxToProfile
 [GitHub Repo](https://github.com/timsutton/mcxToProfile)
