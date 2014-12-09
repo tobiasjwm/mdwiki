@@ -82,11 +82,32 @@ If you need to work on networking in the terminal, the [Krypted.com]() article [
 
 
 #### ls
-- *list contents of directory*
-- -l: order the list
-- -lA: show invisible files
-- -le: show ACLs
-- -l@: show extended attributes
+
+*list contents of directory*
+
+##### Ordered  list
+
+	$ ls -l
+	drwxr-xr-x   8 user  staff   272 Oct  9 10:59 profiles
+	drwxr-xr-x  14 user  staff   476 Nov 20 13:43 src
+
+
+##### Show invisible files
+
+	$ ls -lA
+	-rw-r--r--@ 1 user  staff      12292 Aug 11 11:36 .DS_Store
+	-rw-r--r--  1 user  staff          0 Sep  1  2012 .localized
+	drwxr-xr-x  8 user  staff        272 Jul 31 15:00 Recordings
+
+##### Write a directory list to a file
+
+*The following will write out all files in a directory including all files in all subdirectories.*
+
+	$ ls -R > ~/Desktop/file-list.txt
+	
+##### Other operators
+- -e: show ACLs
+- -@: show extended attributes
 
 
 #### clear
