@@ -75,10 +75,10 @@ If you need to work on networking in the terminal, the [Krypted.com]() article [
 #### pwd
 - *print working directory*
 
-	```bash
-	$ pwd
-	/Users/me
-	```
+```bash
+$ pwd
+/Users/me
+```
 
 
 #### ls
@@ -87,17 +87,20 @@ If you need to work on networking in the terminal, the [Krypted.com]() article [
 
 ##### Ordered  list
 
-	$ ls -l
-	drwxr-xr-x   8 user  staff   272 Oct  9 10:59 profiles
-	drwxr-xr-x  14 user  staff   476 Nov 20 13:43 src
-
+```bash
+$ ls -l
+drwxr-xr-x   8 user  staff   272 Oct  9 10:59 profiles
+drwxr-xr-x  14 user  staff   476 Nov 20 13:43 src
+```
 
 ##### Show invisible files
 
-	$ ls -lA
-	-rw-r--r--@ 1 user  staff      12292 Aug 11 11:36 .DS_Store
-	-rw-r--r--  1 user  staff          0 Sep  1  2012 .localized
-	drwxr-xr-x  8 user  staff        272 Jul 31 15:00 Recordings
+```bash
+$ ls -lA
+-rw-r--r--@ 1 user  staff      12292 Aug 11 11:36 .DS_Store
+-rw-r--r--  1 user  staff          0 Sep  1  2012 .localized
+drwxr-xr-x  8 user  staff        272 Jul 31 15:00 Recordings
+```
 
 ##### Write a directory list to a file
 
@@ -106,8 +109,8 @@ If you need to work on networking in the terminal, the [Krypted.com]() article [
 	$ ls -R > ~/Desktop/file-list.txt
 	
 ##### Other operators
-- -e: show ACLs
-- -@: show extended attributes
+- `-e`: show ACLs
+- `-@`: show extended attributes
 
 
 #### clear
@@ -201,6 +204,15 @@ ln -s /System/Library/CoreServices/Applications/Network\ Utility.app \
 sudo softwareupdate --schedule off 
 ```
 
+
+#### tmutil
+*Make changes to Time Machine settings*
+
+##### Turn off Time Machine 
+
+```bash
+sudo tmutil disable
+```
 
 #### netstat 
 - *show network status*
