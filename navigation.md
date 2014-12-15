@@ -12,6 +12,7 @@
 * # Profiles
 * [mcxToProfile](using-mcxToProfile.md)
 * [make-profile-pkg](using-make-profile-pkg.md)
+* [Managing Profiles](managing-profiles.md)
 
 [Writing]()
 
