@@ -28,7 +28,15 @@ If you need to work on networking in the terminal, the [Krypted.com]() article [
 
 ### Navigation
 
-- `!!` = repeat a command
+- `!!` = Repeat a command. This is incredibly useful when you typed a command and forgot to use `sudo`.
+
+	```bash
+	$ tmutil disable
+	tmutil: disable requires root privileges.
+	$ sudo !!
+	sudo tmutil disable
+	```
+	
 - `!$` = reuse last item of previous command
 
 	```bash
@@ -44,6 +52,14 @@ If you need to work on networking in the terminal, the [Krypted.com]() article [
 	- `?` - single character
 
 ### Tab completion
+*When typing file paths, it is both faster and more accurate to use tab completion. Start typing a path and then press tab. If you have a unique character at the end of your typing the item will be completed. If it is a file, the file will be completed including extension. If it is a directory, it will be completed through the `/`.*
+
+*If you have several folders or files in the current directory with similar names, double-tap the tab key to view a list of files that begin with the characters you have typed.*
+
+```bash
+$ cd ~/Documents/a {tab-tab}
+a.txt	ab.txt	abc.txt
+```
 
 
 ### Keyboard Shortcuts
@@ -69,11 +85,9 @@ If you need to work on networking in the terminal, the [Krypted.com]() article [
 
 ## Bash Commands
 
-### Small Tools
 
-
-#### pwd
-- *print working directory*
+### pwd
+*Print working directory. This returns the path to the folder you are in.*
 
 ```bash
 $ pwd
@@ -81,11 +95,40 @@ $ pwd
 ```
 
 
-#### ls
+### clear
+*Pushes command line up to top of screen, giving you a clean slate in your terminal window.*
+
+
+### touch
+*Create an empty document*
+
+```bash
+touch /path/to/file.txt
+```
+
+*Touch can also be used to update file modify date on an existing file.*
+
+
+### cp 
+*Copy a file to a new location. Requires two arguments; file path and path to new location. Destination does not require file name, just directory.*
+
+```bash
+cp /path/to/file.txt /path/to/copy/file.txt
+```
+
+### mv
+*Move a file to a new location. Requires two arguments; file path and path to new location. `mv` can be dangerous. If anything goes wrong such as a power loss or an error during transfer, your file is toast.*
+
+```bash
+mv /path/to/file.txt /path/to/copy/file.txt
+```
+
+
+### ls
 
 *list contents of directory*
 
-##### Ordered  list
+#### Ordered  list
 
 ```bash
 $ ls -l
@@ -93,7 +136,7 @@ drwxr-xr-x   8 user  staff   272 Oct  9 10:59 profiles
 drwxr-xr-x  14 user  staff   476 Nov 20 13:43 src
 ```
 
-##### Show invisible files
+#### Show invisible files
 
 ```bash
 $ ls -lA
@@ -102,44 +145,37 @@ $ ls -lA
 drwxr-xr-x  8 user  staff        272 Jul 31 15:00 Recordings
 ```
 
-##### Write a directory list to a file
+#### Write a directory list to a file
 
 *The following will write out all files in a directory including all files in all subdirectories.*
 
-	$ ls -R > ~/Desktop/file-list.txt
+	ls -R > ~/Desktop/file-list.txt
 	
-##### Other operators
+#### Other operators
 - `-e`: show ACLs
 - `-@`: show extended attributes
 
+### lsof
+*List of running processes.*
 
-#### clear
-- *pushes command line up to top of screen*
+This has one very useful function: find a process using an external drive. This comes in handy when you cannot eject a disk because it "is in use by another application". Use the following to identify the process then use `kill` to knock it out.
 
-
-#### touch
-- *Change modify date, create a file*
-- *Create an empty document*
-
-	```bash
-	touch /path/to/file.txt
-	```
-
-	
-#### cp 
-- requires two arguments; file and new location. Destination does not require file name, just directory. 
+```bash
+$ lsof | grep /Volumes/Data
+Microsoft Word
+```
 
 
-#### top 
+### top 
 - show running processes
 - `-o` (order), use with cpu or rsize 
 
 
-#### kill
+### kill
 - with PID (Process ID)
 - add `-9` to force
 
-##### Find a PID and kill an app
+#### Find a PID and kill an app
 
 ```bash
 $ ps ax | grep -i {APPNAME} | grep -v grep
@@ -147,31 +183,28 @@ $ kill -HUP {PID}
 ```
 
 	
-#### killall 
-- with name
+### killall 
+*Kill an app with it's process name. Make sure to use quotes on the name.*
 
 ```bash
 sudo killall "Mail"
 ```
 
-#### open 
-- open files or launch apps 
-- `-e` = open in default editor
+### open 
+#### Open apps 
 	
 ```bash
 open /System/Library/CoreServices/Applications/Network\ Utility.app
 ```
 
-	
-#### lsof
--  list running processes
+#### Open a document
 
 ```bash
-lsof | grep /Volumes/Data #see what Application is using a drive
+open -e /path/to/file.txt
 ```
 
 	
-#### opendiff
+### opendiff
 - Use **FileMerge.app*** to graphically compare or merge file or directories.
 - Once open in **FileMerge.app***, you can save a merged version
 
@@ -180,7 +213,7 @@ opendiff modified.txt original.txt
 ```
 	
 
-#### ln
+### ln
 - create hard links
 - Use `-s` for symbolic links
 
@@ -190,7 +223,7 @@ ln -s /System/Library/CoreServices/Applications/Network\ Utility.app \
 ```
 
 
-#### softwareupdate
+### softwareupdate
 
 - `--CatalogURL` let's you specify a catalog file
 - `softwareupdate -l --CatalogURL <URL>` to list available updates from a specific catalog
@@ -205,7 +238,7 @@ sudo softwareupdate --schedule off
 ```
 
 
-#### tmutil
+### tmutil
 *Make changes to Time Machine settings*
 
 ##### Turn off Time Machine 
@@ -214,20 +247,20 @@ sudo softwareupdate --schedule off
 sudo tmutil disable
 ```
 
-#### netstat 
+### netstat 
 - *show network status*
 - -r = show routing tables
 - -n = show network addresses
 
 
-#### df
+### df
 - *display free disk space*
 - `-H` "Human-readable" output. Using base 10 for sizes. 
 - `-h` "Human-readable" output. Using base 2 for sizes. 
 - `-h` - help: have syntax help pop-up
 
 
-#### ssh
+### ssh
 - Secure Shell
 - log into the command line on a remote computer
 - Use the format "USER@ADDRESS"
@@ -238,7 +271,7 @@ ssh -p 222 gadmin@192.168.1.1
 ```
 
 
-#### pmset
+### pmset
 
 - *Power Management System*
 - `-b` = change battery settings
@@ -251,7 +284,7 @@ ssh -p 222 gadmin@192.168.1.1
 pmset -c sleep 0 #Sets sleep on AC power to OFF
 ```
 
-### Search
+## Search
 
 - `which` = find the location of a command in your $PATH
 - `find` -- *search* -name [-iname for non-case-sensitive search]
@@ -259,67 +292,6 @@ pmset -c sleep 0 #Sets sleep on AC power to OFF
 	- update the DB: `/usr/libexec/locate.updatedb` 
 	- only indexes user-owned files
 		- run with `sudo` to index everything, lasts through next index
-
-
-## Text Editors
-
-### nano
-
-Note! nano is a command line editor.
-
-- **Save:** To save the current file, press ***Control-O*** (WriteOut).
-
-- **Quit:** To quit nano, press ***Control-X*** (Exit). If you’ve made any changes to the document that you haven’t yet saved, nano prompts you to save the file before exiting. Press ***N*** to discard changes and quit immediately, ***C*** to cancel and stay in nano, or ***Y*** to save changes and exit. If you do save changes, nano verifies that you want to keep the existing file name (if you don’t, you can type a new one). Press Return after verifying the file name.
-
-- **Find:** To find text within the file, press ***Control-W*** (Where Is). Type the text you’re searching for (case doesn’t matter) and press Return. The cursor jumps to the next spot in the document where that string appears. Repeat this procedure to do additional searches.
-
-- Those commands alone should enable you to do almost everything you need to do in nano. 
-
-- To learn about additional nano features and shortcuts, press ***Control-G*** to view its online help”
-
-#### Open a document
-
-	nano /path/to/file.txt
-
-
-
-### vim
-- **Find:** To find text within the file, press ***Control-W*** (Where Is). Type the text you’re searching for (case doesn’t matter) and press Return. The cursor jumps to the next spot in the document where that string appears. Repeat this procedure to do additional searches.
-
-Note! vim is a command line editor.
-
-- `vim` is an incredibly powerful text editor in the cli. It is modal, meaning there are "modes" that have different implications for the keyboard depending on what mode you are in. Unlike a word processor, `vim` works in a navigation mode by default. Striking the ***J***, ***K***, ***L***, and ***;*** keys will move the cursor left down, up, and right respectively. Striking ***I*** places you into *insert* mode, changing the keyboard mode to place text into the document like a typical editor. Striking the ***esc*** key exits you to the navigation mode.
-
-#### Open a document
-
-	vi /path/to/file.txt
-
-
-### tail
-
-Note! nano is a command line editor.
-
-- *shows the end of a file*
-- `-n` [*number of lines*] plus a value
-
-	tail -n 10 /var/log/system.log
-
-
-### TextEdit
-
-#### Open a document
-
-	open -e /path/to/file.txt
-
-
-### TextWrangler
-
-Attention: Triggering TextWrangler from the cli requires installing the [TextWrangler Command Line Tools](http://www.barebones.com/support/textwrangler/cmd-line-tools.html).
-
-#### Open a document
-
-	edit /path/to/file.txt
-
 
 
 ## User Changes
@@ -399,6 +371,66 @@ From Rusty Myers via [Twitter](http://twitter.com/thespider/status/4979343675207
 - $PACKAGE_PATH: Full path to the installation package. Same as $1.
 - $INSTALLER_TEMP: Scratch directory used by Installer to place its temporary work files. Install operations may use this area for their temporary work, too, but must not overwrite any Installer files. The Installer application erases this directory at the end of the install.
 - $RECEIPT_PATH: Full path to a temporary directory containing the operation executable. This is a subdirectory of $INSTALLER_TEMP. This location may vary between installs. The executable can use this path to locate other files in the package.
+
+
+## Text Editors
+
+### nano
+
+Note! nano is a command line editor.
+
+- **Save:** To save the current file, press ***Control-O*** (WriteOut).
+
+- **Quit:** To quit nano, press ***Control-X*** (Exit). If you’ve made any changes to the document that you haven’t yet saved, nano prompts you to save the file before exiting. Press ***N*** to discard changes and quit immediately, ***C*** to cancel and stay in nano, or ***Y*** to save changes and exit. If you do save changes, nano verifies that you want to keep the existing file name (if you don’t, you can type a new one). Press Return after verifying the file name.
+
+- **Find:** To find text within the file, press ***Control-W*** (Where Is). Type the text you’re searching for (case doesn’t matter) and press Return. The cursor jumps to the next spot in the document where that string appears. Repeat this procedure to do additional searches.
+
+- Those commands alone should enable you to do almost everything you need to do in nano. 
+
+- To learn about additional nano features and shortcuts, press ***Control-G*** to view its online help”
+
+#### Open a document
+
+	nano /path/to/file.txt
+
+
+
+### vim
+- **Find:** To find text within the file, press ***Control-W*** (Where Is). Type the text you’re searching for (case doesn’t matter) and press Return. The cursor jumps to the next spot in the document where that string appears. Repeat this procedure to do additional searches.
+
+Note! vim is a command line editor.
+
+- `vim` is an incredibly powerful text editor in the cli. It is modal, meaning there are "modes" that have different implications for the keyboard depending on what mode you are in. Unlike a word processor, `vim` works in a navigation mode by default. Striking the ***J***, ***K***, ***L***, and ***;*** keys will move the cursor left down, up, and right respectively. Striking ***I*** places you into *insert* mode, changing the keyboard mode to place text into the document like a typical editor. Striking the ***esc*** key exits you to the navigation mode.
+
+#### Open a document
+
+	vi /path/to/file.txt
+
+
+### tail
+
+Note! nano is a command line editor.
+
+- *shows the end of a file*
+- `-n` [*number of lines*] plus a value
+
+	tail -n 10 /var/log/system.log
+
+
+### TextEdit
+
+#### Open a document
+
+	open -e /path/to/file.txt
+
+
+### TextWrangler
+
+Attention: Triggering TextWrangler from the cli requires installing the [TextWrangler Command Line Tools](http://www.barebones.com/support/textwrangler/cmd-line-tools.html).
+
+#### Open a document
+
+	edit /path/to/file.txt
 
 
 ## Single-user Mode
