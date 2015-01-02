@@ -1,6 +1,6 @@
 # Markdown Starter Kit
 
-## <a name="markdown"></a>Markdown
+## Markdown
 
 The [canonical guide](http://daringfireball.net/projects/markdown/), John Gruber's original documentation. 
 
@@ -91,21 +91,7 @@ There are a couple of ways to create Code Blocks.
 
 You can use tabs as in the example above. 
 
-You can wrap your code block in three backticks at the top and bottom:
-
-```markdown
-	```
-	#!bin/bash
-	
-	cd path/to/directory/
-	
-	touch kill.sh
-	
-	chmod 755 kill.sh
-	
-	exit
-	```
-```
+You can wrap your code block in three backticks at the top and bottom.
 
 Any decent Markdown parser will add code highlighting. Just declare the language after the first set of backticks, no space in between. 
 
@@ -225,15 +211,3 @@ Attention: As of October 2014, this solution does not work in `mdwiki`.
 
 Links to headers in a document can be done using the `name` tag. 
 
-#### Create the name tag in the header
-
-```markdown
-## <a name="anchor"></a>Header
-```
-
-#### Create the link in your text
-In this example, the [Markdown link](#markdown) will return you to the Markdown header at the top of this document. 
-
-```markdown
-[Header link](#anchor)
-```

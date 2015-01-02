@@ -270,6 +270,14 @@ sudo tmutil disable
 ssh -p 222 gadmin@192.168.1.1
 ```
 
+When you approve ssh to systems, the get saved into a file at ~/.ssh/known_hosts. When using DHCP without assignments, you can run into conflicts. Use the following command to clear out the entries and get a fresh start.
+
+```bash
+ssh-keygen -R http://ip.address.here
+```
+
+Source: [Rich Trouton](https://twitter.com/rtrouton/status/543120764816609280)
+
 
 ### pmset
 
