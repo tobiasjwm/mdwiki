@@ -335,6 +335,12 @@ From [Topher Kessler](http://www.macissues.com/author/tkesslermac-com/) via [thi
 
 ## Other Commands
 
+### Logout all GUI users
+
+	sudo pkill loginwindow
+
+From [StackExchange](http://apple.stackexchange.com/questions/126761/way-to-logout-a-user-from-the-command-line-in-os-x-10-9)
+
 ### Replace text on files in a folder
 
 	perl -pi -w -e 's/REPLACE_THIS/WITH_THIS/g;' *.txt
