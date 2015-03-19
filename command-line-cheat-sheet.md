@@ -292,6 +292,13 @@ Source: [Rich Trouton](https://twitter.com/rtrouton/status/543120764816609280)
 pmset -c sleep 0 #Sets sleep on AC power to OFF
 ```
 
+### dscl
+Directory Service command line utility.
+
+#### Look up users in a UID range
+
+	dscl . list /Users UniqueID | awk '$2 >= 490 && $2 <= 499 {print $1}'
+
 ## Search
 
 - `which` = find the location of a command in your $PATH
