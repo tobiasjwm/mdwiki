@@ -143,6 +143,13 @@ my $password_generator = XKPasswd->new('/usr/local/xkpasswd.pm/sample_dict.txt',
 print $password_generator->password()."\n";
 ```
 
+## Build an Installer
+
+NOTE: This is just notes.
+
+- Place `xkpasswd.pm` in `/usr/local/`
+- Place the Automator stuff in `~/Library/Services/`
+	*Since this is user domain, might be easier to add this part to a scriptRunner event.*
 
 ## Resources
 
