@@ -212,6 +212,10 @@ open -e /path/to/file.txt
 opendiff modified.txt original.txt
 ```
 	
+### opensnoop
+- `opensnoop` tells you what is happening on your machine in great detail. Best to set this up to look at a particular process
+- Watch `cfprefsd` to see what files are changing as you make preference changes:
+`sudo opensnoop -avgn cfprefsd `
 
 ### ln
 - create hard links
