@@ -302,6 +302,16 @@ Directory Service command line utility.
 #### Look up users in a UID range
 
 	dscl . list /Users UniqueID | awk '$2 >= 490 && $2 <= 499 {print $1}'
+	
+### ps 
+
+WARNING: This needs lots of work. I am just ading a snippit on `cfprefsd`
+
+Wnat to know where a preference is? Run this then change a preference in the app and see what was changed.
+
+```bash
+ps ax | grep cfprefsd
+```
 
 ## Search
 
